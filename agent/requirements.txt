@@ -1,0 +1,13 @@
+langchain
+langgraph
+google-cloud-texttospeech
+langchain-google-genai
+pygame # for audio playback
+duckduckgo-search
+langchain-community
+ddgs
+speechRecognition
+pyaudio # for audio input
+pvporcupine
+RealtimeSTT
+porcupine-key-words

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic UI Dashboard</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Vibrant gradient background */
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism card style */
+        .glass-card {
+            /* Frosted glass effect */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            
+            /* Background color with opacity */
+            background-color: rgba(255, 255, 255, 0.25);
+            
+            /* Subtle border */
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            
+            /* Rounded corners and shadow */
+            border-radius: 1.5rem; /* 24px */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        /* Weather icon animation */
+        @keyframes pulse-light {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(255, 220, 100, 0.6));
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 16px rgba(255, 220, 100, 1));
+            }
+        }
+        
+        .weather-animate {
+            animation: pulse-light 4s infinite ease-in-out;
+        }
+
+        /* Custom scrollbar for news list */
+        .news-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .news-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .news-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+        .news-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Main container -->
+    <div class="container mx-auto min-h-screen p-4 md:p-8 lg:p-12">
+        
+        <!-- Header -->
+        <header class="mb-8 md:mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white/90" style="text-shadow: 0 2px 10px rgba(0,0,0,0.1)">
+                Your Dashboard
+            </h1>
+            <p class="text-lg text-white/70 mt-2">Welcome back, here's your overview.</p>
+        </header>
+
+        <!-- Grid layout for cards -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+            <!-- Card 1: Animated Weather -->
+            <div class="glass-card p-6 flex flex-col justify-between h-96 lg:h-auto lg:row-span-2">
+                <div>
+                    <h2 class="text-2xl font-semibold text-white/90">Current Weather</h2>
+                    <p class="text-lg text-white/70">Exton, PA</p>
+                </div>
+                
+                <!-- Animated weather icon and temp -->
+                <div class="flex flex-col items-center justify-center my-4">
+                    <!-- Weather Icon (Animated SVG) -->
+                    <div class="weather-animate w-24 h-24 md:w-32 md:h-32">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="w-full h-full">
+                            <defs>
+                                <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#FFD700; stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FFA500; stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="32" cy="32" r="16" fill="url(#sunGradient)" />
+                            <line x1="32" y1="8" x2="32" y2="12" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="32" y1="52" x2="32" y2="56" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="56" y1="32" x2="52" y2="32" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="12" y1="32" x2="8" y2="32" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="50.9" y1="13.1" x2="48.1" y2="15.9" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="15.9" y1="48.1" x2="13.1" y2="50.9" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="50.9" y1="50.9" x2="48.1" y2="48.1" stroke="white" stroke-width="3" stroke-linecap="round" />
+                            <line x1="15.9" y1="15.9" x2="13.1" y2="13.1" stroke="white" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    
+                    <!-- Temperature -->
+                    <p class="text-6xl md:text-7xl font-bold text-white mt-4">68°</p>
+                    <p class="text-xl md:text-2xl text-white/80">Sunny</p>
+                </div>
+                
+                <!-- Additional info -->
+                <div class="text-center">
+                    <p class="text-lg text-white/70">High: 72° / Low: 55°</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Recent News -->
+            <div class="glass-card p-6 flex flex-col h-96">
+                <h2 class="text-2xl font-semibold text-white/90 mb-4 flex-shrink-0">Recent News</h2>
+                <!-- Scrollable list -->
+                <div class="news-list flex-grow overflow-y-auto pr-2 space-y-4">
+                    <!-- News Item 1 -->
+                    <a href="#" class="flex items-center p-3 -m-3 rounded-xl transition-all hover:bg-white/10">
+                        <img src="https://placehold.co/64x64/a777e3/FFFFFF?text=Tech" alt="News" class="w-16 h-16 rounded-lg object-cover mr-4">
+                        <div>
+                            <h3 class="font-semibold text-white/90 leading-tight">New Breakthrough in AI Development</h3>
+                            <p class="text-sm text-white/70">Tech Today · 1h ago</p>
+                        </div>
+                    </a>
+                    <!-- News Item 2 -->
+                    <a href="#" class="flex items-center p-3 -m-3 rounded-xl transition-all hover:bg-white/10">
+                        <img src="https://placehold.co/64x64/6e8efb/FFFFFF?text=World" alt="News" class="w-16 h-16 rounded-lg object-cover mr-4">
+                        <div>
+                            <h3 class="font-semibold text-white/90 leading-tight">Global Markets See Unexpected Surge</h3>
+                            <p class="text-sm text-white/70">World News · 3h ago</p>
+                        </div>
+                    </a>
+                    <!-- News Item 3 -->
+                    <a href="#" class="flex items-center p-3 -m-3 rounded-xl transition-all hover:bg-white/10">
+                        <img src="https://placehold.co/64x64/79b791/FFFFFF?text=Eco" alt="News" class="w-16 h-16 rounded-lg object-cover mr-4">
+                        <div>
+                            <h3 class="font-semibold text-white/90 leading-tight">Scientists Discover New Marine Species</h3>
+                            <p class="text-sm text-white/70">Eco Planet · 5h ago</p>
+                        </div>
+                    </a>
+                    <!-- News Item 4 -->
+                    <a href="#" class="flex items-center p-3 -m-3 rounded-xl transition-all hover:bg-white/10">
+                        <img src="https://placehold.co/64x64/f4a261/FFFFFF?text=Art" alt="News" class="w-16 h-16 rounded-lg object-cover mr-4">
+                        <div>
+                            <h3 class="font-semibold text-white/90 leading-tight">Digital Art Exhibit Opens Downtown</h3>
+                            <p class="text-sm text-white/70">Culture Hub · 1d ago</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Playlists -->
+            <div class="glass-card p-6 flex flex-col h-96">
+                <h2 class="text-2xl font-semibold text-white/90 mb-4 flex-shrink-0">My Playlists</h2>
+                <!-- Scrollable grid -->
+                <div class="news-list flex-grow overflow-y-auto pr-2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Playlist Item 1 -->
+                        <a href="#" class="group">
+                            <img src="https://placehold.co/300x300/f72585/FFFFFF?text=Chill+Vibes" alt="Playlist Cover" class="w-full rounded-lg shadow-md transition-all transform group-hover:scale-105">
+                            <h3 class="font-medium text-white/90 mt-2">Chill Vibes</h3>
+                            <p class="text-sm text-white/70">32 Songs</p>
+                        </a>
+                        <!-- Playlist Item 2 -->
+                        <a href="#" class="group">
+                            <img src="https://placehold.co/300x300/7209b7/FFFFFF?text=Focus+Flow" alt="Playlist Cover" class="w-full rounded-lg shadow-md transition-all transform group-hover:scale-105">
+                            <h3 class="font-medium text-white/90 mt-2">Focus Flow</h3>
+                            <p class="text-sm text-white/70">18 Songs</p>
+                        </a>
+                        <!-- Playlist Item 3 -->
+                        <a href="#" class="group">
+                            <img src="https://placehold.co/300x300/3a0ca3/FFFFFF?text=Workout" alt="Playlist Cover" class="w-full rounded-lg shadow-md transition-all transform group-hover:scale-105">
+                            <h3 class="font-medium text-white/90 mt-2">Workout Hits</h3>
+                            <p class="text-sm text-white/70">50 Songs</p>
+                        </a>
+                        <!-- Playlist Item 4 -->
+                        <a href="#" class="group">
+                            <img src="https://placehold.co/300x300/4361ee/FFFFFF?text=Late+Night" alt="Playlist Cover" class="w-full rounded-lg shadow-md transition-all transform group-hover:scale-105">
+                            <h3 class="font-medium text-white/90 mt-2">Late Night Drive</h3>
+                            <p class="text-sm text-white/70">24 Songs</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
+
