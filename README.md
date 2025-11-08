@@ -4,6 +4,8 @@
 
 This project brings together the power of large language models and local hardware to create a responsive and customizable assistant. It listens for your voice, understands your commands, and uses an agentic AI core to decide which tools to use for a specific task—from playing music to managing your to-do list.
 
+**For fun and studies only 😊**
+
 ## 🚀 Features
 
 *   **Voice-First Interface**: Activates with a "Jarvis" wake word and uses speech-to-text to understand commands.
@@ -23,6 +25,7 @@ This project brings together the power of large language models and local hardwa
 *   **Text-to-Speech (TTS)**: Google Cloud Text-to-Speech
 *   **Hardware**: Raspberry Pi 5
 *   **Core Language**: Python
+*   **Assistant UI: Electron (Javascript)
 
 ## ⚠️ Known Issues
 
